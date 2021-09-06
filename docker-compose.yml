@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  openresty:
+    container_name: "openresty"
+    image: "openresty/openresty:latest"
+    volumes:
+      - ./nginx/conf:/usr/local/openresty/nginx/conf
+    ports:
+      - "8888:80"
+
+  arangodb:
+    container_name: "arangodb_3.8.x"
+    image: "arangodb/arangodb:3.8.1"
+    environment:
+      - ARANGO_ROOT_PASSWORD=openSesame
+    ports:
+      - "9999:8529"
